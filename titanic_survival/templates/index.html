@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<html lang="en" dir="ltr">
+  <head>
+    
+  </head>
+  <body>
+    <h1>Predict Survival On The Titanic</h1>
+
+  <div class="row mb-3">
+    <div class="col-md-4 themed-grid-col">
+        <img src="{% static 'images/titanic.jpg' %}" class="thumbnail">
+     </div>
+    <div class="col-md-4 themed-grid-col">
+      <form class="form-horizontal" action="" method = "POST">
+      {% csrf_token %}
+  
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Pclass:</label>
+      <input type="text" class="form-control" name='pclass'>
+     </div>
+
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Sex:</label>
+      <input type="text" class="form-control" name="sex" placeholder="1 if Male, 0 if Female">
+    </div>
+     
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Age:</label>
+      <input type="text" class="form-control" name="age">
+    </div> 
+
+    <div class="form-group">
+    <label class="col-sm-2 control-label">N_siblings/spouses:</label>
+      <input type="text" class="form-control" name="n_siblings_spouses">
+     </div>
+
+    <div class="form-group">
+    <label class="col-sm-2 control-label">N_parents/children:</label>
+      <input type="text" class="form-control" name="n_parents_children">
+     </div>
+     
+   <div class="form-group">
+    <label class="col-sm-2 control-label">Fare:</label>
+      <input type="text" class="form-control" name="fare">
+    </div>
+  
+     <input class="btn btn-outline-dark" type="submit" name="prediction" value='Predict'>
+     </form>
+
+     <h1>Prediction:</h1>
+             {{ result }}
+  </div>
+
+   <div class="col-md-4 themed-grid-col">
+       <img src="{% static 'images/titanic1.jpg' %}" class="thumbnail">
+    </div>
+  </body>
+</html>
+{% endblock content %}
